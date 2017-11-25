@@ -31,8 +31,8 @@
 		<url>http://www.bytemechanics.org</url>
 	</organization>
 	<scm>
-		<connection>https://github.com/bytemechanics/byte-mechanics.git</connection>
-		<url>https://github.com/bytemechanics/byte-mechanics</url>
+		<connection>https://github.com/bytemechanics/bytemecanics-maven.git</connection>
+		<url>https://github.com/bytemechanics/bytemecanics-maven</url>
 	</scm>
 	
 	<distributionManagement>
@@ -52,6 +52,12 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
+    <modules>
+        <module>../copy-commons</module>
+        <module>../fluent-logger</module>
+        <module>../service-repository</module>
+        <module>../type-ex</module>
+    </modules>
 			
 	<dependencies>
 		<!-- Mandatory dependencies for using Spock -->
