@@ -31,8 +31,8 @@
 		<url>http://www.bytemechanics.org</url>
 	</organization>
 	<scm>
-		<connection>https://github.com/watarhu/byte-mechanics.git</connection>
-		<url>https://github.com/watarhu/byte-mechanics</url>
+		<connection>https://github.com/bytemechanics/byte-mechanics.git</connection>
+		<url>https://github.com/bytemechanics/byte-mechanics</url>
 	</scm>
 	
 	<distributionManagement>
