@@ -206,6 +206,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
 			<!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
