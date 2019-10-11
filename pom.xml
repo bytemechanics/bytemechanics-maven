@@ -114,7 +114,7 @@
 					<configuration>
 						<skipTests>${tests.skip}</skipTests>
 						<trimStackTrace>false</trimStackTrace>
-						<argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar</argLine>
+						<argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar -Dfile.encoding=UTF-8</argLine>
 					</configuration>
 				</plugin>		
 				<plugin>
