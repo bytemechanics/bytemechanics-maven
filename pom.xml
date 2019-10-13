@@ -114,9 +114,7 @@
 					<configuration>
 						<skipTests>${tests.skip}</skipTests>
 						<trimStackTrace>false</trimStackTrace>
-						<argLine>
-						   -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-						</argLine>
+						<argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar -Dfile.encoding=UTF-8</argLine>
 					</configuration>
 				</plugin>		
 				<plugin>
@@ -208,6 +206,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 			<!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
 			<plugin>
