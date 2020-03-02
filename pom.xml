@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.bytemechanics</groupId>
 	<artifactId>bytemechanics-maven</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<packaging>pom</packaging>
 	<name>ByteMechanics-Maven</name>
 	<url>http://www.bytemechanics.org</url>
@@ -53,36 +53,47 @@
 		
 		<tests.skip>false</tests.skip>
 		
-		<junit.jupiter.version>5.5.2</junit.jupiter.version>
-		<jmockit.version>1.48</jmockit.version>
+		<!-- test dependencies versions -->
+		<version.junit.jupiter>5.5.2</version.junit.jupiter>
+		<version.jmockit>1.48</version.jmockit>
+		
+		<!-- plugin versions -->
+		<version.plugin.maven-compiler>3.8.1</version.plugin.maven-compiler>
+		<version.plugin.maven-jar>3.1.2</version.plugin.maven-jar>
+		<version.plugin.maven-surefire>3.0.0-M4</version.plugin.maven-surefire>
+		<version.plugin.jacoco>0.8.5</version.plugin.jacoco>
+		<version.plugin.maven-gpg>1.6</version.plugin.maven-gpg>
+		<version.plugin.maven-source>3.1.0</version.plugin.maven-source>
+		<version.plugin.maven-javadoc>3.1.1</version.plugin.maven-javadoc>
+		<version.plugin.nexus-staging>1.6.8</version.plugin.nexus-staging>
 	</properties>
 		
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>${junit.jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jmockit</groupId>
-			<artifactId>jmockit</artifactId>
-			<version>${jmockit.version}</version>
-			<scope>test</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${version.junit.jupiter}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${version.junit.jupiter}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${version.junit.jupiter}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jmockit</groupId>
+				<artifactId>jmockit</artifactId>
+				<version>${version.jmockit}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -110,12 +121,17 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
+					<version>${version.plugin.maven-compiler}</version>
+					<configuration>
+						<showDeprecation>true</showDeprecation>
+						<showWarnings>true</showWarnings>
+						<compilerArgs>-Xlint:unchecked</compilerArgs>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.1.2</version>
+					<version>${version.plugin.maven-jar}</version>
 					<executions>
 						<execution>
 							<goals>
@@ -126,17 +142,17 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M3</version>
+					<version>${version.plugin.maven-surefire}</version>
 					<configuration>
 						<skipTests>${tests.skip}</skipTests>
 						<trimStackTrace>false</trimStackTrace>
-						<argLine> ${argLine} -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar -Dfile.encoding=UTF-8</argLine>
+						<argLine> ${argLine} -javaagent:${settings.localRepository}/org/jmockit/jmockit/${version.jmockit}/jmockit-${version.jmockit}.jar -Dfile.encoding=UTF-8</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.5</version>
+					<version>${version.plugin.jacoco}</version>
 					<executions>
 						<execution>
 							<id>prepare-agent</id>
@@ -163,7 +179,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<version>${version.plugin.maven-gpg}</version>
 					<configuration>
 						<keyname>BBA8B05B</keyname>
 					</configuration>
@@ -180,12 +196,13 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${version.plugin.maven-source}</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
 							<goals>
 								<goal>jar-no-fork</goal>
+								<goal>test-jar-no-fork</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -193,7 +210,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.1.1</version>
+					<version>${version.plugin.maven-javadoc}</version>
 					<configuration>
 						<excludePackageNames>${javadoc.excluded.packages}</excludePackageNames>
 						<outputDirectory>${basedir}/javadoc</outputDirectory>
@@ -212,7 +229,7 @@
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.8</version>
+					<version>${version.plugin.nexus-staging}</version>
 					<extensions>true</extensions>
 					<configuration>
 						<serverId>ossrh</serverId>
