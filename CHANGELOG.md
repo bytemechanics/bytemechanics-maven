@@ -1,3 +1,11 @@
+# Version 2.2.1
+
+* Fix duplicated version locally, no changes 
+
+# Version 2.2.0
+
+* Added apache felix to add osgi metadata in order to anunce the public classes and private ones
+
 # Version 2.1.0
 
 * Added changelog file
