@@ -1,12 +1,24 @@
+# Version 2.2.2
+---
+
+* Fix: Remove arguments on surefire plugin that causes unable to execute individual unit tests
+* Known bug: Coverage not reported
+
+
 # Version 2.2.1
+---
 
 * Fix duplicated version locally, no changes 
 
+
 # Version 2.2.0
+---
 
 * Added apache felix to add osgi metadata in order to anunce the public classes and private ones
 
+
 # Version 2.1.0
+---
 
 * Added changelog file
 * Changed maven-source-plugin in order to upload the test-sources additionally to the main sources
