@@ -1,3 +1,10 @@
+# Version 2.2.3
+---
+
+* Add: Sonar profile to add coverage
+* Updated: Several plugins versions
+
+
 # Version 2.2.2
 ---
 
